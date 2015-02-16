@@ -8,17 +8,10 @@
 	<!-- 支持基于AspectJ的方法级安全 -->
 	<security:global-method-security pre-post-annotations="enabled" mode="aspectj"/>
 
-	<security:http pattern="/js/**" security="none"/>
-	<security:http pattern="/**/*.ico" security="none"/>
-	<security:http pattern="/images/**" security="none"/>
-	<security:http pattern="/css/**" security="none"/>
-	<security:http pattern="/fonts/**" security="none"/>
-
 	<security:http use-expressions="true" create-session="ifRequired" request-matcher="ant">
 		<!-- 在web.xml中把filterProxy的pattern设置成了与dispatcher一致，所以所有经过的url都要拦截 -->
-  		<security:logout logout-success-url="/login.html"/>
- 		<security:form-login/>
- 		<security:intercept-url pattern="/login.html" access="permitAll()"/>
+ 		<security:http-basic/>
+<!--  		<security:intercept-url pattern="/**" access="permitAll()"/> -->
  		<security:intercept-url pattern="/**" access="isAuthenticated()"/>
 	</security:http>
 	
@@ -27,7 +20,6 @@
 			<security:user-service>
 				<!-- pass:abc -->
 				<security:user name="clam" password="a9993e364706816aba3e25717850c26c9cd0d89d" authorities=""/>
-				<security:user name="duocaiclam" password="a9993e364706816aba3e25717850c26c9cd0d89d" authorities=""/>
 			</security:user-service>
 			<security:password-encoder hash="sha" >
 <!-- 				<security:salt-source user-property="username"/> -->
