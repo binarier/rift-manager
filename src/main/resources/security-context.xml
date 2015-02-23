@@ -2,11 +2,11 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://www.springframework.org/schema/beans"
 	xmlns:security="http://www.springframework.org/schema/security"
-	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- 支持基于AspectJ的方法级安全 -->
-	<security:global-method-security pre-post-annotations="enabled" mode="aspectj"/>
+<!-- 	<security:global-method-security pre-post-annotations="enabled" mode="aspectj"/> -->
 
 	<security:http use-expressions="true" create-session="ifRequired" request-matcher="ant">
 		<!-- 在web.xml中把filterProxy的pattern设置成了与dispatcher一致，所以所有经过的url都要拦截 -->
